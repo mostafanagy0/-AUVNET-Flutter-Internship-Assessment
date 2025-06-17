@@ -1,4 +1,5 @@
 import 'package:auvnet/core/routing/routes.dart';
+import 'package:auvnet/features/auth/presentation/views/login_view.dart';
 import 'package:auvnet/features/onbording/presentation/Views/onbordind_view.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onbordindView:
         return MaterialPageRoute(builder: (_) => const OnbordindView());
+      case Routes.loginView:
+        return MaterialPageRoute(builder: (_) => const LoginView());
 
       default:
         return null;
