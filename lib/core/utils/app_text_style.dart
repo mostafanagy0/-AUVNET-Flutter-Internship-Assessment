@@ -7,4 +7,5 @@ abstract class TextStyles {
     fontFamily: 'Mulish',
     fontWeight: FontWeight.bold,
   );
+ 
 }

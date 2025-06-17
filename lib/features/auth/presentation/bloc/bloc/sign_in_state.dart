@@ -1,22 +1,27 @@
-import 'package:flutter/foundation.dart';
 import 'package:auvnet/features/auth/domain/entites/user_entite.dart';
 
+class SigninState {
+  final bool isLoading;
+  final String? errorMessage;
+  final UesrEntity? user;
 
-@immutable
-sealed class SigninState {}
+  const SigninState({
+    this.isLoading = false,
+    this.errorMessage,
+    this.user,
+  });
 
-final class SigninInitial extends SigninState {}
+  SigninState copyWith({
+    bool? isLoading,
+    String? errorMessage,
+    UesrEntity? user,
+  }) {
+    return SigninState(
+      isLoading: isLoading ?? this.isLoading,
+      errorMessage: errorMessage ?? this.errorMessage,
+      user: user ?? this.user,
+    );
+  }
 
-final class SigninLoading extends SigninState {}
-
-final class SigninSuccess extends SigninState {
-  final UesrEntity uesrEntite;
-
-  SigninSuccess({required this.uesrEntite});
-}
-
-final class SigninFailure extends SigninState {
-  final String message;
-
-  SigninFailure({required this.message});
+  factory SigninState.initial() => const SigninState();
 }
