@@ -1,10 +1,13 @@
+import 'package:auvnet/core/helpers/extentions.dart';
+import 'package:auvnet/core/routing/routes.dart';
 import 'package:auvnet/features/auth/presentation/bloc/bloc/sign_in_bloc.dart';
 import 'package:auvnet/features/auth/presentation/bloc/bloc/sign_in_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+  const LoginBlocListener({super.key, required this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +29,13 @@ class LoginBlocListener extends StatelessWidget {
             context,
           ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
         } else if (state.user != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("تم تسجيل الدخول بنجاح")),
-          );
-          // Navigator.pushNamed(context, Routes.homeView);
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("login successfully")));
+          context.pushNamed(Routes.homeView);
         }
       },
+      child: child,
     );
   }
 }

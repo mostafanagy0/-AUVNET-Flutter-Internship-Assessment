@@ -10,7 +10,7 @@ class Auvnet extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: Routes.loginView,
+      initialRoute: Routes.signInView,
     );
   }
 }
