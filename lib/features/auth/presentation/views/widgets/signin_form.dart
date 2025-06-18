@@ -3,18 +3,16 @@ import 'package:auvnet/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SignupForm extends StatelessWidget {
+class SignInForm extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final TextEditingController confirmPasswordController;
   final GlobalKey<FormState> formKey;
 
-  const SignupForm({
+  const SignInForm({
     super.key,
     required this.emailController,
     required this.passwordController,
     required this.formKey,
-    required this.confirmPasswordController,
   });
 
   @override
@@ -39,17 +37,6 @@ class SignupForm extends StatelessWidget {
             CustomTextFormField(
               controller: passwordController,
               hintText: 'password',
-              textInputType: TextInputType.text,
-              prefixIcon: SvgPicture.asset(
-                Assets.imageMdiPasswordOutline,
-                width: 20,
-                height: 20,
-              ),
-            ),
-            const SizedBox(height: 18),
-            CustomTextFormField(
-              controller: confirmPasswordController,
-              hintText: 'Confirm passwordd',
               textInputType: TextInputType.text,
               prefixIcon: SvgPicture.asset(
                 Assets.imageMdiPasswordOutline,

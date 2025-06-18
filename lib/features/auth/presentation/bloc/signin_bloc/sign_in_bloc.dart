@@ -1,6 +1,6 @@
 import 'package:auvnet/features/auth/data/repos/auth_repo.dart';
-import 'package:auvnet/features/auth/presentation/bloc/bloc/sign_in_event.dart';
-import 'package:auvnet/features/auth/presentation/bloc/bloc/sign_in_state.dart';
+import 'package:auvnet/features/auth/presentation/bloc/signin_bloc/sign_in_event.dart';
+import 'package:auvnet/features/auth/presentation/bloc/signin_bloc/sign_in_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SigninBloc extends Bloc<SigninEvent, SigninState> {
