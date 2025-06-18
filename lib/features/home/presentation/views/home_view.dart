@@ -3,6 +3,8 @@ import 'package:auvnet/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/custom_got_code_widget.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/custom_text_widget.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/header_widget.dart';
+import 'package:auvnet/features/home/presentation/views/widgets/restaurantListView.dart';
+import 'package:auvnet/features/home/presentation/views/widgets/restaurant_bloc_buiulder.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/service_list_view.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/shortcut_item.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     context.read<HomeBloc>().add(FetchServices());
+    context.read<HomeBloc>().add(FetchRestaurants());
   }
 
   @override
@@ -54,6 +57,10 @@ class _HomeViewState extends State<HomeView> {
                     },
                   ),
 
+                  const SizedBox(height: 24),
+
+                  const SizedBox(height: 19),
+
                   const SizedBox(height: 14),
                   const CustomGotCodeWidget(),
                   const SizedBox(height: 14),
@@ -62,7 +69,9 @@ class _HomeViewState extends State<HomeView> {
 
                   const ShortcutListView(),
                   const SizedBox(height: 14),
-                  Image.asset(Assets.imagePhoto),
+                  SizedBox(height: 180, child: Image.asset(Assets.imagePhoto)),
+                  const CustomTextWidget(text: 'Restaurants:'),
+                  RestaurantBlocBuilder(),
                 ],
               ),
             ),

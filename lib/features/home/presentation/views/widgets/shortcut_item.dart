@@ -19,7 +19,7 @@ class ShortcutItem extends StatelessWidget {
           ),
           child: Image.asset(Assets.imageCoge),
         ),
-        Text('mos'),
+        Text('Super\n Saver'),
       ],
     );
   }
