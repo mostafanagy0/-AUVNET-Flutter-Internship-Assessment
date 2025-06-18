@@ -8,6 +8,7 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
+  cloud_firestore: ^5.6.9
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   firebase_auth: ^5.6.0
@@ -32,13 +33,24 @@ flutter:
   fonts:
     - family: DM Sans
       fonts:
-        - asset: assets/fonts/DMSans-VariableFont_opsz,wght.ttf
-    - family: Mulish
-      fonts:
-        - asset: assets/fonts/Mulish-VariableFont_wght.ttf
+        - asset: assets/fonts/dm_sans/DMSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/dm_sans/DMSans-Bold.ttf
+          weight: 700
+
     - family: Rubik
       fonts:
-        - asset: assets/fonts/Rubik-VariableFont_wght.ttf
+        - asset: assets/fonts/rubik/Rubik-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/rubik/Rubik-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/rubik/Rubik-Medium.ttf
+          weight: 500
+
+    - family: Mulish
+      fonts:
+        - asset: assets/fonts/mulish/Mulish-Light.ttf
+          weight: 300
 
 flutter_assets:
   assets_path: assets/image/

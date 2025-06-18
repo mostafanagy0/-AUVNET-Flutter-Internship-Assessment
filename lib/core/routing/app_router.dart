@@ -4,6 +4,7 @@ import 'package:auvnet/features/auth/presentation/bloc/signin_bloc/sign_in_bloc.
 import 'package:auvnet/features/auth/presentation/bloc/signup_bloc/bloc/signup_bloc.dart';
 import 'package:auvnet/features/auth/presentation/views/signin_view.dart';
 import 'package:auvnet/features/auth/presentation/views/signup_view.dart';
+import 'package:auvnet/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'package:auvnet/features/home/presentation/views/home_view.dart';
 import 'package:auvnet/features/onbording/presentation/Views/onbordind_view.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,12 @@ class AppRouter {
         );
       //HomeView
       case Routes.homeView:
-        return MaterialPageRoute(builder: (_) => HomeView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeBloc>(),
+            child: HomeView(),
+          ),
+        );
 
       default:
         return null;
