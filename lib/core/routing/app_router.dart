@@ -7,6 +7,7 @@ import 'package:auvnet/features/auth/presentation/views/signup_view.dart';
 import 'package:auvnet/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'package:auvnet/features/home/presentation/views/home_view.dart';
 import 'package:auvnet/features/onbording/presentation/Views/onbordind_view.dart';
+import 'package:auvnet/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,8 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onbordindView:
         return MaterialPageRoute(builder: (_) => const OnbordindView());
+      case Routes.splashView:
+        return MaterialPageRoute(builder: (_) => const SplashView());
 
       //SignInView
       case Routes.signInView:
