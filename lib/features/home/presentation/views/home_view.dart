@@ -1,12 +1,7 @@
-import 'package:auvnet/core/utils/assets.dart';
 import 'package:auvnet/features/home/presentation/bloc/bloc/home_bloc.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/custom_got_code_widget.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/custom_text_widget.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/header_widget.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/restaurantListView.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/restaurant_bloc_buiulder.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/service_list_view.dart';
-import 'package:auvnet/features/home/presentation/views/widgets/shortcut_item.dart';
+import 'package:auvnet/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
+import 'package:auvnet/features/home/presentation/views/widgets/home_content_widget.dart';
+import 'package:auvnet/features/home/presentation/views/widgets/placeholder_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +13,41 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomeContentWidget(),
+    const PlaceholderPageWidget(
+      title: 'Categories',
+      icon: Icons.category,
+    ),
+    const PlaceholderPageWidget(
+      title: 'Delivery',
+      icon: Icons.delivery_dining,
+    ),
+    const PlaceholderPageWidget(
+      title: 'Cart',
+      icon: Icons.shopping_cart,
+    ),
+    const PlaceholderPageWidget(
+      title: 'Profile',
+      icon: Icons.person,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    _initializeData();
+  }
+
+  void _initializeData() {
     context.read<HomeBloc>().add(FetchServices());
     context.read<HomeBloc>().add(FetchRestaurants());
   }
@@ -29,54 +56,10 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Headerwidget(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 19),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomTextWidget(text: 'Services:'),
-                  const SizedBox(height: 19),
-
-                  /// BlocBuilder to fetch services only
-                  BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) =>
-                        previous.services != current.services ||
-                        previous.isLoading != current.isLoading,
-                    builder: (context, state) {
-                      if (state.isLoading && state.services.isEmpty) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (state.services.isEmpty) {
-                        return const Center(child: Text('No services found'));
-                      } else {
-                        return ServiceListView(services: state.services);
-                      }
-                    },
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  const SizedBox(height: 19),
-
-                  const SizedBox(height: 14),
-                  const CustomGotCodeWidget(),
-                  const SizedBox(height: 14),
-                  const CustomTextWidget(text: 'Shortcuts:'),
-                  const SizedBox(height: 19),
-
-                  const ShortcutListView(),
-                  const SizedBox(height: 14),
-                  SizedBox(height: 180, child: Image.asset(Assets.imagePhoto)),
-                  const CustomTextWidget(text: 'Restaurants:'),
-                  RestaurantBlocBuilder(),
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
       ),
     );
   }
