@@ -45,5 +45,9 @@ class Assets {
   /// Assets for imagePerger
   /// assets/image/perger.png
   static const String imagePerger = "assets/image/perger.png";
+
+  /// Assets for imagePhoto
+  /// assets/image/photo.png
+  static const String imagePhoto = "assets/image/photo.png";
 }
 

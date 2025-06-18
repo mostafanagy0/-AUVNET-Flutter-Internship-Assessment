@@ -1,3 +1,4 @@
+import 'package:auvnet/core/utils/assets.dart';
 import 'package:auvnet/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/custom_got_code_widget.dart';
 import 'package:auvnet/features/home/presentation/views/widgets/custom_text_widget.dart';
@@ -59,8 +60,9 @@ class _HomeViewState extends State<HomeView> {
                   const CustomTextWidget(text: 'Shortcuts:'),
                   const SizedBox(height: 19),
 
-                  /// هنا لسه مش مربوطة بـ restaurants
                   const ShortcutListView(),
+                  const SizedBox(height: 14),
+                  Image.asset(Assets.imagePhoto),
                 ],
               ),
             ),
